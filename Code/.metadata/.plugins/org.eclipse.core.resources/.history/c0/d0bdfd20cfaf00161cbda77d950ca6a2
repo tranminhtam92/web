@@ -1,0 +1,93 @@
+package Model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import ConnectDB.ConnectDB;
+
+public class ChitietdonnhaphangDAO {
+public Donnhaphang getDonnhaphang(int madnh){
+	Donnhaphang dnh=new Donnhaphang();
+	Connection cn=ConnectDB.getconnectDB();
+	String sql="select * from donnhaphang where madonnhaphang=?";
+	try {
+		PreparedStatement stm=cn.prepareStatement(sql);
+		stm.setInt(1, madnh);
+		ResultSet rs=stm.executeQuery();
+		while(rs.next()){
+			dnh.setMadnh(rs.getInt("madonnhaphang"));
+			dnh.setNgaynhaphang(rs.getDate("ngaynhaphang"));
+			dnh.setTongtien(rs.getInt("tongtien"));
+			dnh.setThanhtoan(rs.getBoolean("thanhtoan"));
+			dnh.setManhanvien(rs.getString("manhanvien"));
+			dnh.setMancc(rs.getString("manhacungcap"));
+			return dnh;
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return dnh;
+}
+public ArrayList<Donnhaphang> getallDonnhaphang(){
+	ArrayList<Donnhaphang> listdnh=new ArrayList<>();
+	Connection cn=ConnectDB.getconnectDB();
+	String sql="select * from donnhaphang";
+	try {
+		PreparedStatement stm=cn.prepareStatement(sql);
+
+		ResultSet rs=stm.executeQuery();
+		while(rs.next()){
+			Donnhaphang dnh=new Donnhaphang();
+			dnh.setMadnh(rs.getInt("madonnhaphang"));
+			dnh.setNgaynhaphang(rs.getDate("ngaynhaphang"));
+			dnh.setTongtien(rs.getInt("tongtien"));
+			dnh.setThanhtoan(rs.getBoolean("thanhtoan"));
+			dnh.setManhanvien(rs.getString("manhanvien"));
+			dnh.setMancc(rs.getString("manhacungcap"));
+			listdnh.add(dnh);
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return listdnh;
+}
+public void insertdonnhaphang(int madnh,String ngaynhaphang, boolean thanhtoan,int tongtien,String manv,String mancc){
+	Connection cn=ConnectDB.getconnectDB();
+	String sql="isert into donnhaphang values(?,?,?,?,?,?)";
+	try {
+		PreparedStatement stm=cn.prepareStatement(sql);
+		stm.setInt(1, madnh);
+		stm.setString(2, ngaynhaphang);
+		stm.setBoolean(3, thanhtoan);
+		stm.setInt(4, tongtien);
+		stm.setString(5, manv);
+		stm.setString(6, mancc);
+		stm.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+public void updatedonnhaphang(int madnh,String ngaynhaphang, boolean thanhtoan,int tongtien,String manv,String mancc){
+	Connection cn=ConnectDB.getconnectDB();
+	String sql="update donnhaphang set ngaynhaphang=?, thanhtoan=?, tongtien=?, manhanvien=?, manhacungcap=? where madonnhaphang=?";
+	try {
+		PreparedStatement stm=cn.prepareStatement(sql);
+		stm.setInt(6, madnh);
+		stm.setString(1, ngaynhaphang);
+		stm.setBoolean(2, thanhtoan);
+		stm.setInt(3, tongtien);
+		stm.setString(4, manv);
+		stm.setString(5, mancc);
+		stm.executeUpdate();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+}

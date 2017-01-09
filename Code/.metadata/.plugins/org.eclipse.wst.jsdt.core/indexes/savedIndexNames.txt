@@ -1,0 +1,9 @@
+INDEX VERSION 1.3+E:\tai lieu\totnghiep\Code\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1014752054.index
+2784531023.index
+4288280398.index
+1224319969.index
+39762150.index
+3771251642.index
+306649815.index
+2414994245.index

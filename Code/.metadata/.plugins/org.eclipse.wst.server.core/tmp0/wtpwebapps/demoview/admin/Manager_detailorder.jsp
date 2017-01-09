@@ -1,0 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="${pageContext.request.contextPath}/admin/Adminstyle.css" rel="stylesheet" type="text/css">
+<title>Quản lý đơn đặt hàng</title>
+</head>
+<body>
+<div class="wrapper">
+<div class="content">
+<div class="left">
+<jsp:include page="menu.jsp"></jsp:include>
+</div>
+<div class="right">
+<h1>Chi tiết đơn đặt hàng</h1>
+<table class="tbcart" cellspacing="10px">
+	<tr>
+		<th> Ảnh</th>
+		<th> Tên</th>
+		<th> Số lượng</th>
+		<th> Giá</th>
+	</tr>
+	<c:forEach items="${detailorder}" var="sp">
+		<tr>
+		<td><img alt="error" src="${pageContext.request.contextPath}/hinhanh/${sp.anh}" class="imgsmall"></td>
+		<td>${sp.tensp}</td>
+		<td>${sp.soluong}</td>
+		<td><c:if test="${sp.khuyenmai>0 }">
+			<span class="amountnew"><fmt:formatNumber type="number" pattern="###,###" value="${sp.gia-((sp.gia*sp.khuyenmai)/100)}"/>đ/kg</span><span class="amountold" ><fmt:formatNumber type="number" pattern="###,###" value="${sp.gia }"/>đ/kg</span>
+			</c:if>	
+			<c:if test="${sp.khuyenmai==0 }">
+			<span class="amountnew"><fmt:formatNumber type="number" pattern="###,###" value="${sp.gia }"/>đ/kg</span>
+			</c:if>			
+		</td>
+	   </tr>
+	 </c:forEach>
+	 <tr>
+	 </tr>
+	</table>
+	<form action="${pageContext.request.contextPath}/Viewbill" method="post">
+	<input type="hidden" name="ordercode" value="${maddh}">
+	<input type="submit" value="xem hoa don" name="key">
+	</form>
+</div>
+</div>
+</div>
+</body>
+</html>

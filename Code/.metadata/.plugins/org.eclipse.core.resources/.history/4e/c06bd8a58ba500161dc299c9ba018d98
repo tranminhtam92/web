@@ -1,0 +1,147 @@
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="Model.Sanpham" %>
+ <%@ page import="java.util.ArrayList" %>
+    
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Content</title>
+</head>
+<body>
+		<div class="content">
+			<div class="danhmuc">
+				<div id="title">Sản phẩm bán chạy</div>
+				<div id="product">
+					<ul>
+						<li><img src="./hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="./hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="./hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="./hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+					</ul>
+				</div>
+			</div>
+			<%int i=0; %>
+			<c:forEach  items="${danhmuc}" var="dm">
+			<div class="danhmuc">
+				<div id="title">${dm.tenloai}</div>
+				<div id="product">
+					<ul>
+					<% ArrayList<Sanpham> listsp=request.getAttribute("loaisanpham"+i); %>
+					<c:forEach  items="${loaisanpham0}" var="sp">
+						<li><img src="./hinhanh/${sp.anh}">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+					</c:forEach>
+					</ul>
+				</div>
+				</div>
+			</c:forEach>
+			<div class="danhmuc">
+				<div id="title">Ca</div>
+				<div id="product">
+					<ul>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+					</ul>
+				</div>
+			</div>
+			<div class="danhmuc">
+			<div id="title">Tom</div>
+				<div id="product">
+					<ul>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+					</ul>
+				</div>
+			</div>
+			<div class="danhmuc">
+			<div id="title">Muc</div>
+				<div id="product">
+					<ul>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+					</ul>
+				</div>
+			</div>
+			<div class="danhmuc">
+			<div id="title">Ghe</div>
+				<div id="product">
+					<ul>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+					</ul>
+				</div>
+			</div>
+			<div class="danhmuc">
+			<div id="title">Oc</div>
+				<div id="product">
+					<ul>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+						<li><img src="../hinhanh/cacang.jpg">
+							<p>ca cang</p>
+							<h3>250 k/kg</h3>
+					</ul>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="${pageContext.request.contextPath}/admin/Adminstyle.css" rel="stylesheet" type="text/css">
+<title>Quản lý nhân viên</title>
+</head>
+<body>
+<div class="wrapper">
+<div class="content">
+<div class="left">
+<jsp:include page="menu.jsp"></jsp:include>
+</div>
+<div class="right">
+<h1>Thêm nhân viên</h1>
+
+<div class="table">
+<form action="${pageContext.request.contextPath}/Adminemployee" method="post">
+<table>
+<tr>
+<td>Tên đăng nhập :</td>
+
+<td> <input type="text" name="employeecode" placeholder="nhập tên đăng nhập" value="" ></td>
+</tr>
+<tr>
+<td>Mật khẩu :</td>
+
+<td> <input type="password" name="password" placeholder="nhập mật khẩu"  value="" ></td>
+</tr>
+<td>Mật khẩu :</td>
+
+<td> <input type="repassword" name="password" placeholder="nhập lại mật khẩu" value="" ></td>
+</tr>
+<tr>
+<td> Tên nhân viên:</td>
+<td> <input type="text" name="employeename" placeholder="nhập tên nhân viên" value=""></td>
+</tr>
+<tr>
+<td> Địa chỉ:</td>
+<td> <input type="text" name="employeeaddress" placeholder="nhập địa chỉ" value=""></td>
+</tr>
+<tr>
+<td> Số điện thoại:</td>
+<td> <input type="text" name="employeetel" placeholder="nhập số điện thoại" value="" ></td>
+</tr>
+
+<tr>
+<td></td>
+<td> <input type="submit" name="key" value="add"></td>
+</tr>
+</table>
+</form>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

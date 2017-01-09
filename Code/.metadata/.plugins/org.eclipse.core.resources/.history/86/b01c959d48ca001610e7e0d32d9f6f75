@@ -1,0 +1,32 @@
+package Model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import ConnectDB.ConnectDB;
+
+public class NhanvienduyetdonDAO {
+	public Nhanvienduyetdon getnhanvien(String username, String password){
+		Nhanvienduyetdon nv=new Nhanvienduyetdon();
+		if(ConnectDB.getconnectDB(username, password)){
+			String sql="execute sp_dangnhap ?";
+			try {
+				PreparedStatement stm=ConnectDB.connection.prepareCall(sql);
+				stm.setString(1, username);
+				ResultSet rs=stm.executeQuery();
+				while(rs.next()){
+					nv.setManhanvien(username);
+					nv.setTennhanvien(rs.getString("tennv"));
+					nv.setQuyen(rs.getString("rolename"));
+					return nv;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return nv;
+	}
+}

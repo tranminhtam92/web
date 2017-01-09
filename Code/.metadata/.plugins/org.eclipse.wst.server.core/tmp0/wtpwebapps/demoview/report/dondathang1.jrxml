@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-12-21T10:59:40 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Coffee_Landscape" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df013db5-f76e-44d3-b0df-bcbc46d93160">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="aa"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[select * from dondathang where thanhtoan='True' and datediff(DAY,ngaydathang,GETDATE())<7 order by maddh desc]]>
+	</queryString>
+	<field name="maddh" class="java.lang.Integer"/>
+	<field name="ngaydathang" class="java.sql.Date"/>
+	<field name="tennguoinhan" class="java.lang.String"/>
+	<field name="diachi" class="java.lang.String"/>
+	<field name="sodienthoai" class="java.lang.String"/>
+	<field name="thanhtoan" class="java.lang.Boolean"/>
+	<field name="vanchuyen" class="java.lang.Boolean"/>
+	<field name="tendangnhap" class="java.lang.String"/>
+	<field name="tongtien" class="java.lang.Integer"/>
+	<field name="ngaythanhtoan" class="java.sql.Date"/>
+	<field name="ngayvanchuyen" class="java.sql.Date"/>
+	<field name="manhanvien" class="java.lang.String"/>
+	<field name="duyetdon" class="java.lang.Boolean"/>
+	<field name="xemdon" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="210" y="0" width="320" height="62" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Don dat hang]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="e9d2002a-c8ee-4649-a258-640dad29110c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="57" height="15" forecolor="#736343" uuid="ceb2b015-6419-4c5d-9282-c1644e466311"/>
+				<text><![CDATA[maddh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="57" y="0" width="57" height="15" forecolor="#736343" uuid="9ac9fb22-b68a-4d18-abaf-5dbd73678792"/>
+				<text><![CDATA[ngaydathang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="114" y="0" width="57" height="15" forecolor="#736343" uuid="cd0180fc-e6b2-45c7-89eb-d984bba5328c"/>
+				<text><![CDATA[tennguoinhan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="171" y="0" width="57" height="15" forecolor="#736343" uuid="165c48a9-2a6a-4dd1-961c-cbf59b1fe244"/>
+				<text><![CDATA[diachi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="228" y="0" width="57" height="15" forecolor="#736343" uuid="81ef4536-def6-4d26-8404-99d0343db628"/>
+				<text><![CDATA[sodienthoai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="285" y="0" width="57" height="15" forecolor="#736343" uuid="d51c8917-3adf-4a3b-9804-79e098bad985"/>
+				<text><![CDATA[thanhtoan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="342" y="0" width="57" height="15" forecolor="#736343" uuid="a6f43d70-3a48-4bda-b282-aa3eb37eb9d0"/>
+				<text><![CDATA[vanchuyen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="399" y="0" width="57" height="15" forecolor="#736343" uuid="e83f1556-e69d-4220-8298-a9effe65f5fd"/>
+				<text><![CDATA[tendangnhap]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="456" y="0" width="57" height="15" forecolor="#736343" uuid="6e9a5b50-fb00-4d21-85c6-12ca6db42cd3"/>
+				<text><![CDATA[tongtien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="513" y="0" width="57" height="15" forecolor="#736343" uuid="8cf85505-a19d-4b4a-84d2-c19194b9bf86"/>
+				<text><![CDATA[ngaythanhtoan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="570" y="0" width="57" height="15" forecolor="#736343" uuid="881b2f52-6eb7-4bee-b229-6af9892f50da"/>
+				<text><![CDATA[ngayvanchuyen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="627" y="0" width="57" height="15" forecolor="#736343" uuid="142e57e3-d185-4270-8347-e85622d8d13e"/>
+				<text><![CDATA[manhanvien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="684" y="0" width="57" height="15" forecolor="#736343" uuid="808a746f-3c8d-4fa5-b5fc-3d3c65426d3d"/>
+				<text><![CDATA[duyetdon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="741" y="0" width="57" height="15" forecolor="#736343" uuid="567a32a9-1bf7-470b-a258-2506483dd1f2"/>
+				<text><![CDATA[xemdon]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="fa7cec56-4ec1-48e6-a26e-7266a995d174"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="57" height="15" uuid="9317bd79-7880-4177-b083-9c03be1c3086"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{maddh}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="57" y="0" width="57" height="15" uuid="6fadc96c-78da-460d-9f6f-9295582635e3"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ngaydathang}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="114" y="0" width="57" height="15" uuid="686f8d33-b610-402d-a9c6-d61cfcf66f9e"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tennguoinhan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="171" y="0" width="57" height="15" uuid="07004502-73da-49f9-a073-7736bf4b4a41"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{diachi}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="228" y="0" width="57" height="15" uuid="28ce129b-065f-4bcd-9a26-5b6d4e5b5484"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sodienthoai}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="285" y="0" width="57" height="15" uuid="e79d0e0e-0e94-40f7-992b-309bb5d00178"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{thanhtoan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="342" y="0" width="57" height="15" uuid="f1ab66ee-4a74-4365-b536-1b1f8c0d82fb"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vanchuyen}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="399" y="0" width="57" height="15" uuid="807fe19a-cb31-4737-b45a-d5f5268d822b"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tendangnhap}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="456" y="0" width="57" height="15" uuid="e08858b6-2251-4eab-9723-61c673b84069"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tongtien}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="513" y="0" width="57" height="15" uuid="4bf60342-a667-4e56-93b1-cdaa48bef0fe"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ngaythanhtoan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="570" y="0" width="57" height="15" uuid="67564560-d026-460d-8ae4-25779d168428"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ngayvanchuyen}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="627" y="0" width="57" height="15" uuid="101d86cf-714d-4fad-a393-014d1d085428"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{manhanvien}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="684" y="0" width="57" height="15" uuid="8d4ac92d-7d11-4c52-a0cf-6b723175463b"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{duyetdon}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="741" y="0" width="57" height="15" uuid="1ec0bf08-48ef-49d4-b0d1-eb3fbb80c5b7"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{xemdon}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="fa5e88d5-a011-4e32-8f12-ce923f903111"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="5d8169bd-4a75-48c8-8a68-6d3ad5ba9402"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="e5e27efa-b599-499b-9ca3-848cb511cb7b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="18cfe1ca-f7d6-48b0-9827-28578b42a5e0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="fbce24bb-3cb1-44a3-8eec-8c067ddbe5b5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

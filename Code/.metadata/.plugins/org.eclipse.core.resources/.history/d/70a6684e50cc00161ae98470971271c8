@@ -1,0 +1,85 @@
+<%@page import="Model.Giohang"%>
+<%@page import="java.util.Map"%>
+<%@page import="Model.Monhang"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="Style.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  
+ 
+           function changequantity(masp,quantity) {
+               //$("#result").html('<img src="${pageContext.request.contextPath}/hinhanh/not-available.png" />');
+                $.post('${pageContext.request.contextPath}/Cart?command=sua', {'masp':masp,'quantity':quantity}, function (data) {
+                    $("#total").html(data);
+                 });
+           }
+</script>
+<title>Web ban hai san</title>
+</head>
+<body>
+<div class="wrapper">
+<jsp:include page="Header.jsp"></jsp:include>
+<jsp:include page="Nav.jsp"></jsp:include>
+<div class="content">
+<%Giohang gh=(Giohang)session.getAttribute("cart") ;
+if(gh==null){
+	gh=new Giohang();
+	session.setAttribute("cart",gh);%>
+<span></span><h3>Không có món hàng nào trong giỏ hàng</h3></span>
+<%}
+%>
+<% if(gh.countitem()>0){ %>
+	<table class="tbcart" cellspacing="10px">
+	<tr>
+		<th> Ảnh</th>
+		<th> Tên</th>
+		<th> Số lượng</th>
+		<th> Giá</th>
+	</tr>
+	<% for (Map.Entry<String, Monhang> list : gh.getListitem().entrySet()) {%>
+		<tr>
+		<td><img alt="error" src="${pageContext.request.contextPath}/hinhanh/<%=list.getValue().getAnh()%>" class="imgsmall"></td>
+		<td> <%=list.getValue().getTensp()%></td>
+		<td> <input type="number" name="quantity" id="quantity" min="1" max="50" value="<%=list.getValue().getSoluong()%>" onchange="changequantity('<%=list.getValue().getMasp()%>',this.value)"></td>
+		<td><%if(list.getValue().getKhuyenmai()>0) {%>
+							<span class="amountnew"><fmt:formatNumber type="number" pattern="###,###" value="<%=list.getValue().getGia()-((list.getValue().getGia()*list.getValue().getKhuyenmai()))/100%>"/>đ/kg</span><span class="amountold" ><fmt:formatNumber type="number" pattern="###,###" value="<%=list.getValue().getGia()%>"/>đ/kg</span>
+							<%}
+							if(list.getValue().getKhuyenmai()==0){%>
+							<span class="amountnew"><fmt:formatNumber type="number" pattern="###,###" value="<%=list.getValue().getGia()%>"/>đ/kg</span>
+							<%} %>
+		</td>
+		<td><a href="${pageContext.request.contextPath}/Cart?command=xoa&productId=<%=list.getValue().getMasp()%>"><img alt="error" src="${pageContext.request.contextPath}/hinhanh/remove.png"></a></td>
+		
+	   </tr>
+
+    <%} %>
+
+    <tr>
+    <td></td>
+     <td colspan="3"><h1 id="total">Tổng tiền:<fmt:formatNumber type="number" pattern="###,###" value="<%=gh.totalprice() %>"/>đ</h1></td>
+    </tr>
+	<tr>
+    <td></td>
+     <td colspan="3">
+     <form action="${pageContext.request.contextPath}/Cart" method="post">
+     <input type="submit" name="command" value="thông tin đặt hàng">
+     </form>
+     </td>
+    </tr>
+	</table>
+<%} %>
+</div>
+<jsp:include page="Footer.jsp"></jsp:include>
+</div>
+
+</body>
+</html>

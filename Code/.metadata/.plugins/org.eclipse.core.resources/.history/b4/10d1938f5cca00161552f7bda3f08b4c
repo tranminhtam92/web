@@ -1,0 +1,96 @@
+package Model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import ConnectDB.ConnectDB;
+
+public class NhanvienduyetdonDAO {
+	public Nhanvienduyetdon getnhanvien(String username, String password){
+		Nhanvienduyetdon nv=new Nhanvienduyetdon();
+		if(ConnectDB.getconnectDB(username, password)){
+			String sql="execute sp_dangnhap ?";
+			try {
+				PreparedStatement stm=ConnectDB.connection.prepareCall(sql);
+				stm.setString(1, username);
+				ResultSet rs=stm.executeQuery();
+				while(rs.next()){
+					nv.setManhanvien(username);
+					nv.setTennhanvien(rs.getString("tennv"));
+					nv.setQuyen(rs.getString("rolename"));
+					rs.close();
+					stm.close();
+					ConnectDB.connection.close();
+					return nv;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return nv;
+	}
+	public ArrayList<Nhanvienduyetdon> getallnhanvien(){
+		ArrayList<Nhanvienduyetdon> listnv=new ArrayList<>();
+		Connection cn=ConnectDB.getconnectDB();
+		String sql="select * from nhanvien";
+		try {
+			PreparedStatement stm=cn.prepareStatement(sql);
+			ResultSet rs=stm.executeQuery();
+			while(rs.next()){
+				Nhanvienduyetdon nv= new Nhanvienduyetdon();
+				nv.setManhanvien(rs.getString("manv"));
+				nv.setTennhanvien(rs.getString("tennv"));
+				nv.setGioitinh(rs.getBoolean("gioitinh"));
+				nv.setDiachi(rs.getString("diachi"));
+				nv.setSodienthoai(rs.getString("sodienthoai"));
+				listnv.add(nv);
+			}
+			rs.close();
+			stm.close();
+			cn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listnv;
+	}
+	public int addlogin(String tendangnhap,String password){
+		Connection cn=ConnectDB.getconnectDB();
+		String sql="execute tao_login ?,?,?,?";
+		try {
+			PreparedStatement stm=cn.prepareCall(sql);
+			stm.setString(1, tendangnhap);
+			stm.setString(2, password);
+			stm.setString(3, tendangnhap);
+			stm.setString(4, "nhanvien");
+			return stm.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 1;
+	}
+	public void addnhanvien(String manv,String tennv,boolean gioitinh,String diachi,String sodienthoai){
+		Connection cn=ConnectDB.getconnectDB();
+		String sql="insert into nhanvien values(?,?,?,?,?)";
+		try {
+			PreparedStatement stm=cn.prepareStatement(sql);
+			stm.setString(1, manv);
+			stm.setString(2, tennv);
+			stm.setString(3, diachi);
+			stm.setString(4, sodienthoai);
+			stm.setBoolean(5, gioitinh);
+			stm.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
+}

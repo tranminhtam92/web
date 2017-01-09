@@ -1,0 +1,103 @@
+package Model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import ConnectDB.ConnectDB;
+import sun.font.LayoutPathImpl;
+
+public class LoaisanphamDAO {
+	public ArrayList<Loaisanpham> getallloaisanpham(){
+		Connection cn=ConnectDB.getconnectDB();
+		ArrayList<Loaisanpham> listsp=new ArrayList<>();
+		String sql="select * from loaisanpham";
+		try {
+			PreparedStatement stm=cn.prepareCall(sql);
+			ResultSet rs=stm.executeQuery();
+		
+			while(rs.next()){
+				
+				Loaisanpham loaisp=new Loaisanpham();
+				loaisp.setMaloai(rs.getString("maloai"));
+				loaisp.setTenloai(rs.getString("tenloai"));
+				
+				loaisp.setVitri(rs.getInt("vitri"));
+				loaisp.setMausac(rs.getString("mausac"));
+				loaisp.setKieuchu(rs.getString("kieuchu"));
+				listsp.add(loaisp);
+			
+			}
+		
+			return listsp;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+	}
+	public Loaisanpham getloaisanpham(String producttypecode){
+		Connection cn=ConnectDB.getconnectDB();
+		Loaisanpham lsp=new Loaisanpham();
+		String sql="select * from loaisanpham where maloai=?";
+		try {
+			PreparedStatement stm=cn.prepareStatement(sql);
+			stm.setString(1, producttypecode);
+			ResultSet rs=stm.executeQuery();
+		
+			while(rs.next()){
+				
+				
+				lsp.setMaloai(rs.getString("maloai"));
+				lsp.setTenloai(rs.getString("tenloai"));
+				
+				lsp.setVitri(rs.getInt("vitri"));
+				lsp.setMausac(rs.getString("mausac"));
+				lsp.setKieuchu(rs.getString("kieuchu"));
+			return lsp;
+			
+			}
+		
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return lsp;
+		}
+		
+		return lsp;
+	}
+	public void updateloaisanpham(String maloai,String tenloai,int vitri,String mausac,String kieuchu){
+		Connection cn=ConnectDB.getconnectDB();
+		String sql="update loaisanpham set tenloai=?,vitri=?,mausac=?,kieuchu=? where maloai=?";
+		try {
+			PreparedStatement stm=cn.prepareStatement(sql);
+			stm.setString(1, tenloai);
+			stm.setInt(2, vitri);
+			stm.setString(3, mausac);
+			stm.setString(4, kieuchu);
+			stm.setString(5, maloai);
+			int a=stm.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+public static void main(String[] arg){
+	LoaisanphamDAO lspdao=new LoaisanphamDAO();
+	Loaisanpham lsp=lspdao.getloaisanpham("ca");
+	//ArrayList<String> a=new ArrayList<>();
+	
+	//for(int i=0;i<lsp.size();i++){
+		//Loaisanpham sp=new Loaisanpham();
+		//sp=lsp.get(i);
+		System.out.println(lsp.getTenloai());
+		//System.out.println(a.get(i));
+		
+	
+}
+}

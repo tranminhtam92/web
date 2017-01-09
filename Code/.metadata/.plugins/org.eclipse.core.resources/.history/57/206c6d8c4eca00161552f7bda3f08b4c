@@ -1,0 +1,94 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="${pageContext.request.contextPath}/admin/Adminstyle.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  
+ 
+           function changequantity(masp,quantity) {
+               //$("#result").html('<img src="${pageContext.request.contextPath}/hinhanh/not-available.png" />');
+                $.post('${pageContext.request.contextPath}/Cart?command=sua', {'masp':masp,'quantity':quantity}, function (data) {
+                    $("#total").html(data);
+                 });
+           }
+           function clickcheck(maddh){
+        	   if($("#checkorder").is(":checked")){
+        		   $("#vieworder").prop("checked", true);
+        		   $.post('${pageContext.request.contextPath}/Adminorder?key=updatecheckorder', {'checkorder':'true','ordercode':maddh}, function (data) {
+    						
+                    });
+        	   }
+        	   else{
+        		   $.post('${pageContext.request.contextPath}/Adminorder?key=updatecheckorder', {'checkorder':'false','ordercode':maddh}, function (data) {
+        			    
+                   });
+        	   }
+           }
+           function clickview(maddh){
+        	   if($("#vieworder").is(":checked")){
+        		   $.post('${pageContext.request.contextPath}/Adminorder?key=updatevieworder', {'vieworder':'true','ordercode':maddh}, function (data) {
+    
+                    });
+        	   }
+        	   else{
+        		   $.post('${pageContext.request.contextPath}/Adminorder?key=updatevieworder', {'vieworder':'false','ordercode':maddh}, function (data) {
+        			    
+                   });
+        	   }
+           }
+           function clickpay(maddh){
+        	   if($("#payorder").is(":checked")){
+        		   $("#vieworder").prop("checked", true);
+        		   $("#checkorder").prop("checked", true);
+        		   $.post('${pageContext.request.contextPath}/Adminorder?key=updatepayorder', {'payorder':'true','ordercode':maddh}, function (data) {
+        			   $("#datepay").html(data);
+                    });
+        	   }
+        	   else{
+        		   $.post('${pageContext.request.contextPath}/Adminorder?key=updatepayorder', {'payorder':'false','ordercode':maddh}, function (data) {
+        			   
+                   });
+        	   }
+           }
+           function clicktransport(maddh){
+        	   if($("#transportorder").is(":checked")){
+        		   $.post('${pageContext.request.contextPath}/Adminorder?key=updatetransportorder', {'transportorder':'true','ordercode':maddh}, function (data) {
+        			   
+                    });
+        	   }
+        	   else{
+        		   $.post('${pageContext.request.contextPath}/Adminorder?key=updatetransportorder', {'transportorder':'false','ordercode':maddh}, function (data) {
+        			   
+                   });
+        	   }
+           }
+</script>
+<title>Tỉ giá dola</title>
+</head>
+<body>
+<div class="wrapper">
+<div class="content">
+<div class="left">
+<jsp:include page="menu.jsp"></jsp:include>
+</div>
+<div class="right">
+<h1>Ty gia dola</h1>
+<form action="#" method="post">
+
+Tỷ giá($): <input type="number" name="tygiado" min="1" value="${tygiado.tigia}">
+<input type="submit" value="edit" name="submit"/>
+</form>
+
+
+</div>
+</div>
+</div>
+</body>
+</html>

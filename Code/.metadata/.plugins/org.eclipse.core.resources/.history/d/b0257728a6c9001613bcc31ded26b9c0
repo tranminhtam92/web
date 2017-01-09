@@ -1,0 +1,131 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="${pageContext.request.contextPath}/admin/Adminstyle.css" rel="stylesheet" type="text/css">
+<title>Quản lý thu chi trong tháng</title>
+</head>
+<body>
+<div class="wrapper">
+<div class="content">
+<div class="left">
+<jsp:include page="menu.jsp"></jsp:include>
+</div>
+<div class="right">
+<h1>Quản lý thu chi trong tháng</h1>
+
+
+<table>
+
+<tr>
+<form action="${pageContext.request.contextPath}/Report_revenues_and_expenditures" action="post">
+<td><input list="browsers" name="month" placeholder="nhập tháng" value="${month}">
+  <datalist id="browsers">
+ <option value="1">
+ <option value="2">
+  <option value="3">
+   <option value="4">
+    <option value="5">
+     <option value="6">
+      <option value="7">
+  <option value="8">
+  <option value="9">
+  <option value="10">
+  <option value="11">
+  <option value="12">
+  </datalist>
+  </td>
+<td> <input list="year" name="year" placeholder="nhập năm" value="${year}">
+  <datalist id="year">
+
+ <option value="2016">
+ <option value="2017">
+  <option value="2018">
+   <option value="2019">
+    <option value="2020">
+     <option value="2021">
+      <option value="2022">
+  </datalist>
+</td>
+<td><input type="image" src="${pageContext.request.contextPath}/hinhanh/find.png" alt="submit" name="key" value="search" width="20px" height="20px"></td>
+</form>
+</tr>
+</table>
+<c:if test="${not empty list_order}">
+<h2>Đơn đặt hàng</h2>
+<div class="table">
+
+<table>
+<tr>
+<th> Mã đơn đặt hàng</th>
+<th> Ngày đặt hàng</th>
+<th>Tên khách hàng</th>
+<th>Tên người nhận</th>
+<th>Địa chỉ</th>
+<th>Số điện thoại</th>
+<th>Tổng tiền</th>
+<th>Thanh toán</th>
+<th>Ngày thanh toán</th>
+
+
+</tr>
+<c:forEach items="${list_order}" var="order">
+<tr>
+<td>${order.maddh }</td>
+<td><fmt:formatDate pattern="dd/MM/yyyy"  value="${order.ngay}" /></td>
+<td>${order.tenkhachhang}</td>
+<td>${order.tennguoinhan}</td>
+<td>${order.diachi}</td>
+<td>${order.sodienthoai}</td>
+<td>${order.tongtien}</td>
+<td><c:if test="${order.thanhtoan}">
+<input type="checkbox" name="payorder" id="payorder" checked="checked" disabled="disabled">
+</c:if>
+<c:if test="${!order.thanhtoan}">
+<input type="checkbox" name="payorder" id="payorder" disabled="disabled">
+</c:if>
+</td>
+<td id="datepay"><fmt:formatDate pattern="dd/MM/yyyy"  value="${order.ngaythanhtoan}" /></td>
+<td><a href="${pageContext.request.contextPath}/Adminorder?key=detail&ordercode=${order.maddh}">chi tiết</a></td>
+</tr>
+</c:forEach>
+</table>
+<h2>Tthu: ${thu}</h2>
+</div>
+<h2>Đơn nhập hàng</h2>
+<div class="table">
+<table>
+<tr>
+<th> Mã đơn nhập hàng</th>
+<th> Ngày nhập hàng</th>
+<th>Tổng tiền</th>
+<th>Thanh toán</th>
+<th>Nhân viên nhận hàng</th>
+<th>Nhà cung cấp</th>
+</tr>
+<c:forEach items="${list_importproduct}" var="importproduct">
+<tr>
+<td>${importproduct.madnh }</td>
+<td><fmt:formatDate pattern="dd/MM/yyyy"  value="${importproduct.ngaynhaphang}" /></td>
+<td>${importproduct.tongtien}</td>
+<td>${importproduct.thanhtoan}</td>
+<td>${importproduct.manhanvien}</td>
+<td>${importproduct.mancc}</td>
+<td><a href="${pageContext.request.contextPath}/Adminimportproduct?key=detail&importproductcode=${importproduct.madnh}">chi tiết</a></td>
+
+</tr>
+</c:forEach>
+</table>
+<h2> Chi: ${chi}</h2>
+<h2>Tổng: ${thu}-${chi}=${thu-chi}</h2>
+</div>
+</c:if>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-12-19T23:47:45 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ffc5bae6-1f6a-4345-8df1-5efbf34782b9">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="aa"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="Masp" class="java.lang.String"/>
+	<field name="tensp" class="java.lang.String"/>
+	<field name="gia" class="java.lang.Integer"/>
+	<field name="donvitinh" class="java.lang.String"/>
+	<field name="soluong" class="java.lang.Integer"/>
+	<field name="mota" class="java.lang.String"/>
+	<field name="anh" class="java.lang.String"/>
+	<field name="ngay" class="java.sql.Date"/>
+	<field name="maloai" class="java.lang.String"/>
+	<field name="khuyenmai" class="java.lang.Short"/>
+	<field name="sanphammoi" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="127" y="24" width="300" height="30" forecolor="#33278C" uuid="5cde9e96-3b53-49a4-bdcf-4c709e9e75f9">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Sản Phẩm]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="60" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="55" height="30" uuid="8e4fbe5d-81be-4059-a772-a8f700aa1148"/>
+				<text><![CDATA[Masp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="55" y="0" width="50" height="30" uuid="9f30ce93-7695-4bb1-a07f-2db8361652dd"/>
+				<text><![CDATA[tensp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="0" width="50" height="30" uuid="88cb9b7c-842a-4daf-b139-82281d3f524a"/>
+				<text><![CDATA[gia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="0" width="50" height="30" uuid="2bb4969e-5624-4b48-a3b2-085fa7bd4552"/>
+				<text><![CDATA[donvitinh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="0" width="50" height="30" uuid="55d3fe4c-e80a-466b-8191-d3cf18df2351"/>
+				<text><![CDATA[soluong]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="0" width="50" height="30" uuid="f4a6d266-9959-464b-bf0c-8647615da6e7"/>
+				<text><![CDATA[mota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="0" width="50" height="30" uuid="615683ed-4adb-4f33-8aca-b37999f2de81"/>
+				<text><![CDATA[anh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="0" width="50" height="30" uuid="6f18fdb7-5cbe-418c-8115-1bdc66115523"/>
+				<text><![CDATA[ngay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="0" width="50" height="30" uuid="cc880d62-16a8-4809-9fef-523b3c03be0d"/>
+				<text><![CDATA[maloai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="50" height="30" uuid="03bbb495-f9c4-46cc-a666-690fbf0918de"/>
+				<text><![CDATA[khuyenmai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="505" y="0" width="50" height="30" uuid="a76731e8-023c-4313-8bb3-0e11b3cd2392"/>
+				<text><![CDATA[sanphammoi]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="55" height="30" uuid="4c2fc2ae-2a5b-4430-9076-5917bee460b5"/>
+				<textFieldExpression><![CDATA[$F{Masp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="10" width="50" height="30" uuid="c8734cc2-d364-4955-9d8c-55951105894f"/>
+				<textFieldExpression><![CDATA[$F{tensp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="10" width="50" height="30" uuid="2626cb82-3098-4a29-9842-9fa272893dec"/>
+				<textFieldExpression><![CDATA[$F{gia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="10" width="50" height="30" uuid="25fc0733-b6b8-47f2-bce8-1aabf1849cc6"/>
+				<textFieldExpression><![CDATA[$F{donvitinh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="10" width="50" height="30" uuid="e8a2c7a9-1875-4739-aaf9-d298129111a4"/>
+				<textFieldExpression><![CDATA[$F{soluong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="10" width="50" height="30" uuid="9bc3cb95-defa-4482-9b6e-4f10ca5e3b61"/>
+				<textFieldExpression><![CDATA[$F{mota}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="10" width="50" height="30" uuid="c60d9c7d-3ae6-4338-ae8a-7e746add2cb6"/>
+				<textFieldExpression><![CDATA[$F{anh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="10" width="50" height="30" uuid="a7362d04-11c3-4107-9342-266ca2490188"/>
+				<textFieldExpression><![CDATA[$F{ngay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="10" width="50" height="30" uuid="94e453ba-8172-419e-a5b8-70f697433a93"/>
+				<textFieldExpression><![CDATA[$F{maloai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="10" width="50" height="30" uuid="1fd5b232-a45d-4146-929f-7d8b5794fefc"/>
+				<textFieldExpression><![CDATA[$F{khuyenmai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="10" width="50" height="30" uuid="ed1df6ca-f594-4542-a7a6-5631b31c9728"/>
+				<textFieldExpression><![CDATA[$F{sanphammoi}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-20" y="45" width="601" height="5" uuid="fae82fc2-d51f-4a65-a86f-0e2363b96f16"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

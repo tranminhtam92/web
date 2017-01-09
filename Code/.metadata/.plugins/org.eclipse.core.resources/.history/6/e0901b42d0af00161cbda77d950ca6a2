@@ -1,0 +1,9 @@
+package Model;
+
+import java.util.ArrayList;
+
+public class ChitietdonnhaphangDAO {
+	public ArrayList<Chitietdonnhaphang> getChitietdonnhaphang(int madnh){
+		ArrayList<Chitietdonnhaphang>
+	}
+}

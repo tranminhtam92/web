@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="${pageContext.request.contextPath}/admin/Adminstyle.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+      $(document).ready(function () {
+           var x_timer;
+           $("#username").keyup(function (e) {
+                clearTimeout(x_timer);
+                var user_name = $(this).val();
+                x_timer = setTimeout(function () {
+                    check_username_ajax(user_name);
+                }, 1000);
+                });
+ 
+           function check_username_ajax(username) {
+                $("#user-result").html('<img src="${pageContext.request.contextPath}/hinhanh/not-available.png" />');
+                $.post('${pageContext.request.contextPath}/CheckEmailServlet', {'username': username}, function (data) {
+                    $("#user-result").html(data);
+                 });
+           }
+       });
+</script>
+</head>
+<body>
+
+
+<div id="registration-form">
+     <label for="username">Enter Username :
+         <input name="username" type="text" id="username" maxlength="50"> <span id="user-result"></span>
+     </label>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+@CHARSET "ISO-8859-1";
+*{
+	margin: 0;
+	padding: 0;
+}
+ul li{
+	text-decoration: none;
+	list-style-type: none;
+}
+div{
+	display: block;
+}
+a{
+	text-decoration: none;
+}
+#wrapper{
+	width: 100%;
+	height: 100%;
+	 display: block;
+    overflow: hidden;
+}
+#header{
+	width: 100%;
+	height: 25%;
+	background:url("../hinhanh/bg.png") repeat;
+}
+.logo{
+	 float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.slogan{
+	margin-top: 30px;
+	margin-left: 120px;
+	padding: 20px;
+}
+.sdt{
+	float: right;
+	margin-top: 60px;
+	margin-right: 50px;
+}
+#nav{
+	width: 100%;
+	height: 45px;
+	background: url("../hinhanh/bgmenu.png") repeat-x;
+	padding-top: 10px;
+	color: black;
+}
+#nav a{
+	font-size: 20px;
+	font-style: italic;
+	text-align: left;
+	padding-left: 20px;
+	color: black;
+}
+#content{
+	width: 100%;
+	height: 1600px;
+	
+}
+#content_left{
+	width: 25%;
+	height: auto;
+	background-color: gray;
+	float: left;
+}
+#danhmuc{
+	display:block;
+	text-align: center;
+	font-size: 20px;
+	color: red;
+	background-color: black;
+}
+#content_left a{
+	  color: blue;
+ 
+    padding-left:10px;
+    padding-bottom:5px;
+    border-bottom: 1px dashed black;
+    display: block;
+    padding-left: 10px;
+    font-size: 20px;
+}
+#content_right{
+	float:right;
+	width: 75%;
+	height: 1600px;
+	background-color: white;
+}
+#row{
+	width: 100%;
+	height: 400px;
+	
+}
+.title{
+	padding-left:40px;;
+	display:block;
+	height:50px;
+	background:url("../hinhanh/h3_left.png") no-repeat;
+}
+#row li{
+	padding-left: 20px;
+	float: left;
+}
+#footer{
+	width: 100%;
+	height: 150px;
+	background-color: orange;
+	text-align: center;
+}
